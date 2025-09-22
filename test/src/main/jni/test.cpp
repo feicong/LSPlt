@@ -1,3 +1,6 @@
+// LSPlant库测试文件
+// 用于测试LSPlant PLT Hook库的功能
+
 #include "logging.h"
 #include "lsplt.hpp"
 #include <jni.h>
