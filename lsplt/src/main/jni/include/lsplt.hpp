@@ -1,3 +1,4 @@
+// LSPlant PLT Hook库主头文件
 #pragma once
 
 #include <sys/types.h>
@@ -6,28 +7,19 @@
 #include <string_view>
 #include <vector>
 
-/// \namespace lsplt
+/// LSPlant命名空间
 namespace lsplt {
 inline namespace v2 {
 
-/// \struct MapInfo
-/// \brief An entry that describes a line in /proc/self/maps. You can obtain a list of these entries
-/// by calling #Scan().
+/// 内存映射信息结构体
+/// 描述/proc/self/maps中的一行，可通过调用Scan()获取这些条目的列表
 struct MapInfo {
-    /// \brief The start address of the memory region.
-    uintptr_t start;
-    /// \brief The end address of the memory region.
-    uintptr_t end;
-    /// \brief The permissions of the memory region. This is a bit mask of the following values:
-    /// - PROT_READ
-    /// - PROT_WRITE
-    /// - PROT_EXEC
-    uint8_t perms;
-    /// \brief Whether the memory region is private.
-    bool is_private;
-    /// \brief The offset of the memory region.
-    uintptr_t offset;
-    /// \brief The device number of the memory region.
+    uintptr_t start;        // 内存区域起始地址
+    uintptr_t end;          // 内存区域结束地址
+    uint8_t perms;          // 内存区域权限（PROT_READ/PROT_WRITE/PROT_EXEC的位掩码）
+    bool is_private;        // 是否为私有内存区域
+    uintptr_t offset;       // 内存区域偏移量
+    /// 设备号
     /// Major can be obtained by #major()
     /// Minor can be obtained by #minor()
     dev_t dev;

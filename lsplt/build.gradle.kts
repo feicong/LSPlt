@@ -1,11 +1,12 @@
+// LSPlant库构建配置 - PLT Hook核心库
 import java.nio.file.Paths
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 
 plugins {
-    id("com.android.library")
-    id("maven-publish")
-    id("signing")
+    id("com.android.library")    // Android库插件
+    id("maven-publish")          // Maven发布插件
+    id("signing")                // 签名插件
 }
 
 buildscript {

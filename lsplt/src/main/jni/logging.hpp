@@ -1,3 +1,4 @@
+// LSPlant日志系统头文件
 #pragma once
 
 #include <android/log.h>
@@ -6,6 +7,7 @@
 #define LOG_TAG "LSPlt"
 #endif
 
+// 日志宏定义
 #ifdef LOG_DISABLED
 #define LOGD(...) 0
 #define LOGV(...) 0

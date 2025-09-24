@@ -1,32 +1,34 @@
+// ELF文件处理工具类
 #pragma once
 #include <link.h>
 #include <stdint.h>
 #include <string_view>
 #include <vector>
 
+// ELF文件解析和操作类
 class Elf {
-    ElfW(Addr) base_addr_ = 0;
-    ElfW(Addr) bias_addr_ = 0;
+    ElfW(Addr) base_addr_ = 0;      // 基地址
+    ElfW(Addr) bias_addr_ = 0;      // 偏移地址
 
-    ElfW(Ehdr) *header_ = nullptr;
-    ElfW(Phdr) *program_header_ = nullptr;
+    ElfW(Ehdr) *header_ = nullptr;          // ELF头
+    ElfW(Phdr) *program_header_ = nullptr;  // 程序头
 
-    ElfW(Dyn) *dynamic_ = nullptr;  //.dynamic
+    ElfW(Dyn) *dynamic_ = nullptr;          // .dynamic段
     ElfW(Word) dynamic_size_ = 0;
 
-    const char *dyn_str_ = nullptr;  //.dynstr (string-table)
-    ElfW(Sym) *dyn_sym_ = nullptr;   //.dynsym (symbol-index to string-table's offset)
+    const char *dyn_str_ = nullptr;         // .dynstr (字符串表)
+    ElfW(Sym) *dyn_sym_ = nullptr;          // .dynsym (符号索引到字符串表偏移)
 
-    ElfW(Addr) rel_plt_ = 0;  //.rel.plt or .rela.plt
+    ElfW(Addr) rel_plt_ = 0;                // .rel.plt 或 .rela.plt
     ElfW(Word) rel_plt_size_ = 0;
 
-    ElfW(Addr) rel_dyn_ = 0;  //.rel.dyn or .rela.dyn
+    ElfW(Addr) rel_dyn_ = 0;                // .rel.dyn 或 .rela.dyn
     ElfW(Word) rel_dyn_size_ = 0;
 
-    ElfW(Addr) rel_android_ = 0;  // android compressed rel or rela
+    ElfW(Addr) rel_android_ = 0;            // Android压缩的rel或rela
     ElfW(Word) rel_android_size_ = 0;
 
-    // for ELF hash
+    // ELF哈希表
     uint32_t *bucket_ = nullptr;
     uint32_t bucket_count_ = 0;
     uint32_t *chain_ = nullptr;

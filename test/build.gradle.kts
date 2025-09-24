@@ -1,10 +1,12 @@
+// LSPlant测试应用构建配置 - PLT Hook库测试应用
 import com.android.build.api.dsl.ManagedVirtualDevice
 import com.android.build.gradle.internal.tasks.ManagedDeviceInstrumentationTestTask
 
 plugins {
-    id("com.android.application")
+    id("com.android.application")    // Android应用插件
 }
 
+// 从根项目获取Android配置
 val androidTargetSdkVersion: Int by rootProject.extra
 val androidMinSdkVersion: Int by rootProject.extra
 val androidBuildToolsVersion: String by rootProject.extra
@@ -13,10 +15,10 @@ val androidNdkVersion: String by rootProject.extra
 val androidCmakeVersion: String by rootProject.extra
 
 android {
-    namespace = "org.lsposed.lsplt.test"
-    compileSdk = androidCompileSdkVersion
-    ndkVersion = androidNdkVersion
-    buildToolsVersion = androidBuildToolsVersion
+    namespace = "org.lsposed.lsplt.test"        // 命名空间
+    compileSdk = androidCompileSdkVersion       // 编译SDK版本
+    ndkVersion = androidNdkVersion              // NDK版本
+    buildToolsVersion = androidBuildToolsVersion // 构建工具版本
 
     buildFeatures {
         buildConfig = false

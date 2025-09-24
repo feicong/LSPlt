@@ -1,3 +1,4 @@
+// 系统调用相关定义和工具函数
 /* Copyright 2005-2011 Google LLC
  *
  * Redistribution and use in source and binary forms, with or without
